@@ -1,4 +1,3 @@
-// src/app/posts/page.tsx
 import { getPost } from "@/lib/api";
 import Link from "next/link";
 
