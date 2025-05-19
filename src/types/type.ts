@@ -9,3 +9,9 @@ export type PhotoPage = {
    author:string;
    download_url:string;
 }
+
+export type TodoPage = {
+    id: number;
+    title: string;
+    completed: string;
+}
