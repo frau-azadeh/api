@@ -1,4 +1,4 @@
-import { PhotoPage, PostPage } from "@/types/type";
+import { PhotoPage, PostPage, TodoPage } from "@/types/type";
 import axios from "axios";
 
 const jsonApi = axios.create({
@@ -19,16 +19,30 @@ export async function getPhoto(): Promise<PhotoPage[]> {
     return res.data
 }
 
+import { AxiosError } from "axios";
+
 export async function getPostById(id: string): Promise<PostPage | null> {
-    try {
-      const postId = parseInt(id);
-      if (isNaN(postId)) return null;
-  
-      const res = await jsonApi.get<PostPage>(`/posts/${postId}`);
-      return res.data;
-    } catch (error) {
-      console.error("خطا در گرفتن پست:", error);
+  const postId = Number(id);
+  if (isNaN(postId)) return null;
+
+  try {
+    const res = await jsonApi.get<PostPage>(`/posts/${postId}`);
+    return res.data;
+  } catch (error) {
+    const err = error as AxiosError;
+
+    if (err.response?.status === 404) {
+      console.warn(`پست با id=${postId} پیدا نشد.`);
       return null;
     }
+
+    console.error("خطا در گرفتن پست:", err.message);
+    return null;
   }
+}
+
   
+export async function getTodo(): Promise<TodoPage[]> {
+  const res =  await jsonApi.get<TodoPage[]>("/todos")
+  return res.data 
+}
