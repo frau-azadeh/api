@@ -1,5 +1,6 @@
 import { PhotoPage, PostPage, TodoPage } from "@/types/type";
 import axios from "axios";
+import { AxiosError } from "axios";
 
 const jsonApi = axios.create({
     baseURL: "https://jsonplaceholder.typicode.com",
@@ -19,7 +20,7 @@ export async function getPhoto(): Promise<PhotoPage[]> {
     return res.data
 }
 
-import { AxiosError } from "axios";
+
 
 export async function getPostById(id: string): Promise<PostPage | null> {
   const postId = Number(id);
@@ -32,15 +33,32 @@ export async function getPostById(id: string): Promise<PostPage | null> {
     const err = error as AxiosError;
 
     if (err.response?.status === 404) {
-      console.warn(`پست با id=${postId} پیدا نشد.`);
+      console.warn(`This post with id=${postId} not found`);
       return null;
     }
 
-    console.error("خطا در گرفتن پست:", err.message);
+    console.error("error with get post", err.message);
     return null;
   }
 }
 
+export async function getTodoById(id: string): Promise<TodoPage | null>{
+  const todoId = Number(id);
+  if(isNaN(todoId)) return null;
+  try{
+    const res = await jsonApi.get<TodoPage>(`/todos/${todoId}`);
+    return res.data;
+  }catch(error){
+    const err = error as AxiosError;
+
+    if(err.response?.status=== 404){
+      console.warn(`This todo ${todoId} not found`);
+      return null;
+    }
+    console.error("error with get post, err.message");
+    return null
+  }
+}
   
 export async function getTodo(): Promise<TodoPage[]> {
   const res =  await jsonApi.get<TodoPage[]>("/todos")
