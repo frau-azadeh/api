@@ -1,6 +1,7 @@
-// src/app/posts/[postId]/page.tsx
 import { getPostById } from "@/lib/api";
 import { PostPage } from "@/types/type";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -8,16 +9,28 @@ type Props = {
   };
 };
 
+export async function generateMetadata({params}:Props): Promise<Metadata> {
+  const post = await getPostById(params.postId)
+
+
+if(!post){
+  return{
+    title:"not found",
+    description: "not found with userId"
+  };
+}
+return{
+  title:`post: ${post.title}`,
+  description: post.body.slice(0,100)
+}
+}
 export default async function SinglePostPage({ params }: Props) {
-  const post: PostPage | null = await getPostById(params.postId);
+  const post:PostPage | null = await getPostById(params.postId);
 
   if (!post) {
-    return (
-      <div className="text-center text-red-600 p-6 font-bold">
-        پست مورد نظر پیدا نشد یا شناسه نامعتبر است.
-      </div>
-    );
+    notFound();
   }
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4 py-10">
