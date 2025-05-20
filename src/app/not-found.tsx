@@ -1,4 +1,3 @@
-// src/app/not-found.tsx
 export default function NotFoundPage() {
     return (
       <div className="flex flex-col justify-center items-center min-h-screen bg-white">
