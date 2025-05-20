@@ -3,13 +3,13 @@ import { PostPage } from "@/types/type";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type Props = {
+type PropsSinglePostPage = {
   params: {
     postId: string;
   };
 };
 
-export async function generateMetadata({params}:Props): Promise<Metadata> {
+export async function generateMetadata({params}:PropsSinglePostPage): Promise<Metadata> {
   const post = await getPostById(params.postId)
 
 
@@ -24,7 +24,7 @@ return{
   description: post.body.slice(0,100)
 }
 }
-export default async function SinglePostPage({ params }: Props) {
+export default async function SinglePostPage({ params }: PropsSinglePostPage) {
   const post:PostPage | null = await getPostById(params.postId);
 
   if (!post) {
