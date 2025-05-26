@@ -10,10 +10,14 @@ export default function Home() {
         </div>
         <div className="space-x-3 flex justify-center items-center">
           <Link href="/posts">
-            <Button variant="danger" size="md">Go to post page</Button>
+            <Button variant="danger" size="md">
+              Go to post page
+            </Button>
           </Link>
           <Link href="/photo">
-            <Button variant="primary" size="md">Go to photo page</Button>
+            <Button variant="primary" size="md">
+              Go to photo page
+            </Button>
           </Link>
         </div>
       </div>

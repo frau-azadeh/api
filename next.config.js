@@ -3,6 +3,6 @@
 const nextConfig = {
   reactStrictMode: true,
   // تنظیمات دیگه
-}
+};
 
 module.exports = nextConfig;

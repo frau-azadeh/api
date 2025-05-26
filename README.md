@@ -1,4 +1,4 @@
-# 🚀 API  Project
+# 🚀 API Project
 
 A modern full-stack application built with **Next.js**, **Tailwind CSS**, and **TypeScript**, focused on working with external/internal **APIs**, and tested using **Jest**.
 
@@ -15,7 +15,7 @@ A modern full-stack application built with **Next.js**, **Tailwind CSS**, and **
 ## 🎯 Features
 
 - ✅ Fetch and display posts & photos from external APIs
-- 🧩 Modular and reusable components 
+- 🧩 Modular and reusable components
 - 💅 Responsive and clean UI with Tailwind
 - 🔍 SEO-ready using dynamic metadata with `generateMetadata`
 - 🧪 Full testing coverage with **Jest + React Testing Library**
@@ -63,7 +63,3 @@ Feel free to open issues or submit pull requests.
 ## 🌻Developed by
 
 Azadeh Sharifi Soltani
-
-
-
-

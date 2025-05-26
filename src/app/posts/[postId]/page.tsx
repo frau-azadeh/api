@@ -28,9 +28,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SinglePostPage({
-  params,
-}: PropsSinglePostPage) {
+export default async function SinglePostPage({ params }: PropsSinglePostPage) {
   const post: PostPage | null = await getPostById(params.postId);
 
   if (!post) {
