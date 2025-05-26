@@ -23,9 +23,6 @@ A modern full-stack application built with **Next.js**, **Tailwind CSS**, and **
 
 ---
 
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
