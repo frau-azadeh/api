@@ -4,7 +4,7 @@ export default async function PhotoPage() {
     const photos = await getPhoto();
 
     return(
-        <div className="flex justify-center items-center min-h-screen bg-gray-200 p-6">
+        <div className="flex justify-center items-center min-h-screen p-6">
             <div className="w-full max-w-[1200px]">
                 <ul className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-10">
                 {photos.slice(0,12).map((photo)=>(
