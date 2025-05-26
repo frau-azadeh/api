@@ -28,7 +28,7 @@ const Button:React.FC<ButtonProps> = ({
     <button 
         {...props}
         className={clsx(
-          'px-2 py-4 rounded-lg',
+          'px-2 py-4 rounded-lg cursor-pointer',
           variantClass[variant],
           sizeClass[size],
           className
