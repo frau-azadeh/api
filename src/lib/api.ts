@@ -3,24 +3,22 @@ import axios from "axios";
 import { AxiosError } from "axios";
 
 const jsonApi = axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com",
-    timeout: 5000,
-})
+  baseURL: "https://jsonplaceholder.typicode.com",
+  timeout: 5000,
+});
 
 const picsumApi = axios.create({
-    baseURL: "https://picsum.photos",
-})
+  baseURL: "https://picsum.photos",
+});
 export async function getPost(): Promise<PostPage[]> {
-    const res = await jsonApi.get<PostPage[]>("/posts");
-    return res.data
+  const res = await jsonApi.get<PostPage[]>("/posts");
+  return res.data;
 }
 
 export async function getPhoto(): Promise<PhotoPage[]> {
-    const res = await picsumApi.get<PhotoPage[]>("/v2/list");
-    return res.data
+  const res = await picsumApi.get<PhotoPage[]>("/v2/list");
+  return res.data;
 }
-
-
 
 export async function getPostById(id: string): Promise<PostPage | null> {
   const postId = Number(id);
@@ -42,25 +40,25 @@ export async function getPostById(id: string): Promise<PostPage | null> {
   }
 }
 
-export async function getTodoById(id: string): Promise<TodoPage | null>{
+export async function getTodoById(id: string): Promise<TodoPage | null> {
   const todoId = Number(id);
-  if(isNaN(todoId)) return null;
-  try{
+  if (isNaN(todoId)) return null;
+  try {
     const res = await jsonApi.get<TodoPage>(`/todos/${todoId}`);
     return res.data;
-  }catch(error){
+  } catch (error) {
     const err = error as AxiosError;
 
-    if(err.response?.status=== 404){
+    if (err.response?.status === 404) {
       console.warn(`This todo ${todoId} not found`);
       return null;
     }
     console.error("error with get post, err.message");
-    return null
+    return null;
   }
 }
-  
+
 export async function getTodo(): Promise<TodoPage[]> {
-  const res =  await jsonApi.get<TodoPage[]>("/todos")
-  return res.data 
+  const res = await jsonApi.get<TodoPage[]>("/todos");
+  return res.data;
 }

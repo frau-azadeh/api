@@ -1,9 +1,11 @@
 export default function NotFoundPage() {
-    return (
-      <div className="flex flex-col justify-center items-center min-h-screen ">
-        <h1 className="text-4xl font-bold text-red-600 mb-4">Not Found 404</h1>
-        <p className="text-gray-600 text-lg font-bold">This page not found!</p>
-      </div>
-    );
-  }
-  
+  return(
+    <div className="flex flex-col justify-center items-center h-screen">
+      <img
+        src="/not-found.png"
+        alt="not-found"
+        className="w-full max-w-md rounded-2xl shadow-lg transform transition duration-300 hover:scale-75 md:hover:scale-125 sm:hover:scale-50"
+      />
+    </div>
+  )
+}
