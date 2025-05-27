@@ -1,5 +1,5 @@
 // components/ClientPostList.tsx
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import { getPost } from "@/lib/api";
