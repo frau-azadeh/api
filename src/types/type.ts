@@ -1,14 +1,14 @@
-export type PostPage = {
+export interface PostPage  {
   id: number;
   title: string;
   body: string;
 };
 
-export type PhotoPage = {
-  id: number;
+export interface PhotoPage {
+  id: string;
   author: string;
   download_url: string;
-};
+}
 
 export type TodoPage = {
   id: number;
