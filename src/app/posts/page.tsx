@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { getPost } from '@/lib/api';
-import PostCard from '@/components/ui/PostCard';
-import Pagination from '@/components/ui/Pagination';
-import { useSearchParams, useRouter } from 'next/navigation';
-import type { PostPage } from '@/types/type';
+import { useEffect, useState } from "react";
+import { getPost } from "@/lib/api";
+import PostCard from "@/components/ui/PostCard";
+import Pagination from "@/components/ui/Pagination";
+import { useSearchParams, useRouter } from "next/navigation";
+import type { PostPage } from "@/types/type";
 
 const POSTS_PER_PAGE = 9;
 
@@ -14,7 +14,7 @@ const PostPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const pageParam = Number(searchParams.get('page')) || 1;
+  const pageParam = Number(searchParams.get("page")) || 1;
   const [currentPage, setCurrentPage] = useState<number>(pageParam);
 
   useEffect(() => {

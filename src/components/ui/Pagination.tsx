@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Button from '@/components/ui/Button';
-import PaginationItem from '@/components/ui/PaginationItem';
-import { getPaginationRange } from '@/utils/paginationUtils';
-import React from 'react';
+import Button from "@/components/ui/Button";
+import PaginationItem from "@/components/ui/PaginationItem";
+import { getPaginationRange } from "@/utils/paginationUtils";
+import React from "react";
 
 interface PaginationProps {
   currentPage: number;

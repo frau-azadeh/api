@@ -1,8 +1,8 @@
-export interface PostPage  {
+export interface PostPage {
   id: number;
   title: string;
   body: string;
-};
+}
 
 export interface PhotoPage {
   id: string;
