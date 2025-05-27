@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import type { PhotoPage } from '@/types/type';
+import type { PhotoPage } from "@/types/type";
 
 export default function PhotoCard({ photo }: { photo: PhotoPage }) {
   return (

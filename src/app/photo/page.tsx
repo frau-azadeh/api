@@ -1,5 +1,4 @@
-
-import PhotoGallery from '@/components/PhotoGallery';
+import PhotoGallery from "@/components/PhotoGallery";
 
 export default function PhotoPage() {
   return (

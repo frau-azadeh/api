@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { Search, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { getPost } from '@/lib/api';
-import { PostPage } from '@/types/type';
+import { Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { getPost } from "@/lib/api";
+import { PostPage } from "@/types/type";
 
 export default function SearchBar() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<PostPage[]>([]);
   const [showResults, setShowResults] = useState(false);
 
@@ -19,8 +19,8 @@ export default function SearchBar() {
       }
 
       const posts = await getPost();
-      const filtered = posts.filter(post =>
-        post.title.toLowerCase().includes(query.toLowerCase())
+      const filtered = posts.filter((post) =>
+        post.title.toLowerCase().includes(query.toLowerCase()),
       );
       setResults(filtered);
       setShowResults(true);
@@ -31,7 +31,7 @@ export default function SearchBar() {
   }, [query]);
 
   const handleClose = () => {
-    setQuery('');
+    setQuery("");
     setResults([]);
     setShowResults(false);
   };
@@ -50,7 +50,10 @@ export default function SearchBar() {
       {showResults && results.length > 0 && (
         <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md border border-gray-200 max-h-60 overflow-y-auto z-50">
           <div className="flex justify-end px-2 pt-2">
-            <button onClick={handleClose} className="text-gray-500 hover:text-red-600">
+            <button
+              onClick={handleClose}
+              className="text-gray-500 hover:text-red-600"
+            >
               <X className="w-5 h-5" />
             </button>
           </div>

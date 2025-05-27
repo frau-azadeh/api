@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { getPhoto } from '@/lib/api';
-import type { PhotoPage } from '@/types/type';
-import LightGallery from 'lightgallery/react';
+import { useEffect, useState } from "react";
+import { getPhoto } from "@/lib/api";
+import type { PhotoPage } from "@/types/type";
+import LightGallery from "lightgallery/react";
 
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-thumbnail.css';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
-import lgZoom from 'lightgallery/plugins/zoom';
-import PhotoCard from './PhotoCard';
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+import PhotoCard from "./PhotoCard";
 
 export default function PhotoGallery() {
   const [photos, setPhotos] = useState<PhotoPage[]>([]);
