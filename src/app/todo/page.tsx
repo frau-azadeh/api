@@ -5,7 +5,7 @@ export default async function TodoPage() {
   const todos = await getTodo();
 
   return (
-    <div className="flex justify-center bg-gray-50 min-h-screen py-10 px-4">
+    <div className="flex justify-center bg-gray-50 min-h-screen py-10 px-12 mt-20">
       <div className="w-full max-w-[1200px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {todos.map((todo) => (
