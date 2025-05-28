@@ -1,39 +1,46 @@
 "use client";
-
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useCallback, useState } from "react";
+import SearchBar from "./SearchBar";
 import { Menu, X } from "lucide-react";
-import SearchBar from "@/components/ui/SearchBar";
+import clsx from "clsx";
 
-export default function Navbar() {
+const navItems = [
+  { href: "/", label: "Main" },
+  { href: "/todo", label: "To do" },
+  { href: "/posts", label: "Post" },
+  { href: "/photo", label: "Photo" },
+];
+
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = useCallback((href: string) => pathname === href, [pathname]);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto  sm:px-6 lg:px-8">
-        {/* Mobile & Desktop Container */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Left: Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-xl font-bold text-blue-600"
-          >
+          {/*Logo*/}
+          <Link href="/" className="flex items-center gap-2 text-xl ">
             <img
               src="/logo.png"
               alt="Logo"
-              className="w-15 h-15 m-2 transform transition hover:scale-125"
+              className="w-10 h-10 transition duration-300 hover:scale-125 border border-gray-300 shadow rounded-lg"
             />
           </Link>
 
-          {/* Center: Search bar */}
-          <div className="flex-1 flex justify-center">
+          {/* search bar*/}
+          <div className="flex flex-1 justify-center m-2">
             <SearchBar />
           </div>
-
-          {/* Right: Hamburger */}
+          {/* Hamburger */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-700 hover:text-blue-600 md:hidden m-2"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="text-gary-600 hover:text-blue-700 duration-300 transition md:hidden m-2"
           >
             {menuOpen ? (
               <X className="w-6 h-6" />
@@ -42,53 +49,50 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex gap-6 ">
-            <Link
-              href="/todo"
-              className="text-gray-700 rounded-lg transition px-4 py-2 hover:bg-blue-950 hover:text-white"
-            >
-              To do
-            </Link>
-            <Link
-              href="/posts"
-              className="text-gray-700 rounded-lg transition px-4 py-2 hover:bg-blue-950 hover:text-white"
-            >
-              Post
-            </Link>
-            <Link
-              href="/photo"
-              className="text-gray-700 rounded-lg transition px-4 py-2 hover:bg-blue-950 hover:text-white"
-            >
-              Photo
-            </Link>
+          <div className="hidden md:flex gap-6">
+            {navItems.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={clsx(
+                  "px-4 py-2 rounded-lg transition duration-300 font-medium",
+                  {
+                    "bg-blue-950 text-white": isActive(href),
+                    "text-gray-700 hover:bg-blue-950 hover:text-white":
+                      !isActive(href),
+                  },
+                )}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
-
-        {/* Mobile Menu */}
+        {/*Mobile Nav*/}
         {menuOpen && (
-          <div className="md:hidden mt-2 pb-4 bg-blue-100 ">
-            <Link
-              href="/todo"
-              className="block text-gray-700 hover:bg-blue-950 hover:text-white py-2 p-2"
-            >
-              To do
-            </Link>
-            <Link
-              href="/posts"
-              className="block text-gray-700 hover:bg-blue-950 hover:text-white py-2 p-2"
-            >
-              Post
-            </Link>
-            <Link
-              href="/photo"
-              className="block text-gray-700 hover:bg-blue-950 hover:text-white py-2 p-2"
-            >
-              Photo
-            </Link>
+          <div className="md:hidden mt-2 pb-4 bg-blue-100">
+            {navItems.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={closeMenu}
+                className={clsx(
+                  "px-4 py-2 rounded-lg transition duration-300 block",
+                  {
+                    "bg-blue-950 text-white": isActive(href),
+                    "text-gray-700 hover:bg-blue-950 hover:text-white":
+                      !isActive(href),
+                  },
+                )}
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         )}
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
