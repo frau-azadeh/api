@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import clsx from 'clsx';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react'
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   variant?: "primary" | "secondary" | "danger";
   size?: "xs" | "md" | "lg";
   children: ReactNode;
@@ -9,15 +9,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: React.FC<ButtonProps> = ({
   className,
-  variant = "primary",
+  variant= "primary",
   size = "md",
   children,
   ...props
 }) => {
+
   const variantClass = {
-    primary: "bg-blue-500",
-    secondary: "bg-gray-500",
-    danger: "bg-red-500",
+    primary: "bg-blue-500 hover:bg-blue-700 transition duration-300",
+    secondary: "bg-gray-500 hover:bg-gray-700 transition duration-300",
+    danger: "bg-red-500 hover:bg-red-700 transition duration-300",
   };
 
   const sizeClass = {
@@ -28,17 +29,17 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={clsx(
-        "rounded-lg cursor-pointer text-white",
-        variantClass[variant],
-        sizeClass[size],
-        className,
-      )}
-      {...props}
+    className={clsx(
+      "rounded-lg text-white cursor-pointer",
+      variantClass[variant],
+      sizeClass[size],
+      className,
+    )}
+    {...props}
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
