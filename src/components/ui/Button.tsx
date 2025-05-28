@@ -15,9 +15,9 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const variantClass = {
-    primary: "bg-blue-500",
-    secondary: "bg-gray-500",
-    danger: "bg-red-500",
+    primary: "bg-blue-500 hover:bg-blue-700 transition duration-300",
+    secondary: "bg-gray-500 hover:bg-gray-700 transition duration-300",
+    danger: "bg-red-500 hover:bg-red-700 transition duration-300",
   };
 
   const sizeClass = {
@@ -29,7 +29,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={clsx(
-        "rounded-lg cursor-pointer text-white",
+        "rounded-lg text-white cursor-pointer",
         variantClass[variant],
         sizeClass[size],
         className,

@@ -1,40 +1,12 @@
 "use client";
 
-import { Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Search, X, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { getPost } from "@/lib/api";
-import { PostPage } from "@/types/type";
+import { useSearch } from "@/components/hooks/useSearch";
 
 export default function SearchBar() {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<PostPage[]>([]);
-  const [showResults, setShowResults] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (query.trim().length === 0) {
-        setResults([]);
-        return;
-      }
-
-      const posts = await getPost();
-      const filtered = posts.filter((post) =>
-        post.title.toLowerCase().includes(query.toLowerCase()),
-      );
-      setResults(filtered);
-      setShowResults(true);
-    };
-
-    const timeout = setTimeout(fetchData, 300);
-    return () => clearTimeout(timeout);
-  }, [query]);
-
-  const handleClose = () => {
-    setQuery("");
-    setResults([]);
-    setShowResults(false);
-  };
+  const { query, setQuery, results, showResults, loading, error, handleClose } =
+    useSearch();
 
   return (
     <div className="relative w-full max-w-xl">
@@ -47,7 +19,11 @@ export default function SearchBar() {
       />
       <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
 
-      {showResults && results.length > 0 && (
+      {loading && (
+        <Loader2 className="absolute right-3 top-2.5 w-5 h-5 animate-spin text-blue-500" />
+      )}
+
+      {showResults && (
         <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md border border-gray-200 max-h-60 overflow-y-auto z-50">
           <div className="flex justify-end px-2 pt-2">
             <button
@@ -57,11 +33,18 @@ export default function SearchBar() {
               <X className="w-5 h-5" />
             </button>
           </div>
+
+          {error && <p className="text-red-600 px-4 py-2 text-sm">{error}</p>}
+
+          {!error && !loading && results.length === 0 && (
+            <p className="text-gray-500 px-4 py-2 text-sm">Not found</p>
+          )}
+
           <ul>
             {results.map((post) => (
               <li key={post.id} className="border-b last:border-0">
                 <Link
-                  href={`/post/${post.id}`}
+                  href={`/posts/${post.id}`}
                   onClick={handleClose}
                   className="block p-2 hover:bg-blue-100 text-gray-800"
                 >

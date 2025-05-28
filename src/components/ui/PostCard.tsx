@@ -1,27 +1,33 @@
 import Link from "next/link";
-
+import React from "react";
+import { ChevronsRight } from "lucide-react";
 interface PostCardProps {
   id?: number;
   title: string;
   body: string;
-  hideLink?: boolean; // Not show "Read more".
+  hideLink?: boolean;
 }
 
-const PostCard = ({ id, title, body, hideLink = false }: PostCardProps) => {
+const PostCard: React.FC<PostCardProps> = ({
+  id,
+  title,
+  body,
+  hideLink = false,
+}) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md p-6 hover:shadow-lg transition-all duration-300">
-      <h2 className="text-xl font-semibold text-blue-900 mb-2 line-clamp-none">
+    <div className="border border-gray-300 rounded-xl p-4 bg-white shadow-md hover:shadow-xl transition duration-300">
+      <h2 className="text-blue-400 line-clamp-1 mb-4 font-bold text-lg">
         {title}
       </h2>
-      <p className="text-gray-600 text-base mb-4 leading-relaxed line-clamp-none">
+      <p className="pl-2 text-justify text-base leading-8 line-clamp-4 mb-2 text-gray-600">
         {body}
       </p>
       {!hideLink && id !== undefined && (
         <Link
           href={`/posts/${id}`}
-          className="text-blue-600 hover:underline font-medium"
+          className="text-blue-500 hover:text-blue-800 duration-300 transition flex items-end gap-6"
         >
-          Read more →
+          Read more <ChevronsRight className="w-4 h-4" />
         </Link>
       )}
     </div>
