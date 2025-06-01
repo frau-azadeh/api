@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
   return (
@@ -6,7 +6,9 @@ const Footer = () => {
       <div className="max-w-[1200px] w-full mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 py-6">
           <div>
-            <span className="font-bold text-gray-600 block mb-2">Contact API</span>
+            <span className="font-bold text-gray-600 block mb-2">
+              Contact API
+            </span>
             <ul className="text-base text-gray-500 space-y-1 cursor-pointer">
               <li>API Leadership</li>
               <li>About API</li>
@@ -15,7 +17,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className="font-bold text-gray-600 block mb-2">API Value</span>
+            <span className="font-bold text-gray-600 block mb-2">
+              API Value
+            </span>
             <ul className="text-base text-gray-500 space-y-1 cursor-pointer">
               <li>Accessibility</li>
               <li>Education</li>
@@ -28,7 +32,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className="font-bold text-gray-600 block mb-2">API Store</span>
+            <span className="font-bold text-gray-600 block mb-2">
+              API Store
+            </span>
             <ul className="text-base text-gray-500 space-y-1 cursor-pointer">
               <li>API Store</li>
               <li>Find a Store</li>
@@ -40,7 +46,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className="font-bold text-gray-600 block mb-2">API Wallet</span>
+            <span className="font-bold text-gray-600 block mb-2">
+              API Wallet
+            </span>
             <ul className="text-base text-gray-500 space-y-1 cursor-pointer">
               <li>API Card</li>
               <li>API Pay</li>
@@ -54,7 +62,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
