@@ -1,4 +1,4 @@
-import { PhotoPage, PostPage, TodoPage } from "@/types/type";
+import { PhotoPage, PostPage, TodoPage,UserPage } from "@/types/type";
 import axios from "axios";
 import { AxiosError } from "axios";
 
@@ -7,12 +7,18 @@ const jsonApi = axios.create({
   timeout: 5000,
 });
 
+
 const picsumApi = axios.create({
   baseURL: "https://picsum.photos",
 });
 export async function getPost(): Promise<PostPage[]> {
   const res = await jsonApi.get<PostPage[]>("/posts");
   return res.data;
+}
+
+export async function getUser():Promise<UserPage[]> {
+  const res = await jsonApi.get<UserPage[]>("/users");
+  return res.data
 }
 
 export async function getPhoto(): Promise<PhotoPage[]> {
