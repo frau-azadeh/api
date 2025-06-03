@@ -16,25 +16,25 @@ export type TodoPage = {
   completed: string;
 };
 
-export interface Address{
+export interface Address {
   street: string;
   suite: string;
   city: string;
   zipcode: string;
 }
 
-export interface Geo{
+export interface Geo {
   lat: string;
   lang: string;
 }
 
-export interface Company{
+export interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
 }
 
-export interface UserPage{
+export interface UserPage {
   id: number;
   name: string;
   username: string;
