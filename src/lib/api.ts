@@ -1,4 +1,4 @@
-import { PostPage } from "@/types/type";
+import { PostPage, TodoPage } from "@/types/type";
 import axios, { AxiosError } from "axios";
 
 const jsonApi = axios.create({
@@ -35,3 +35,26 @@ export async function getPostById(id: string): Promise<PostPage | null> {
   }
 }
 
+export async function getTodo(): Promise<TodoPage[]> {
+  const res = await jsonApi.get<TodoPage[]>("/todos")
+  return res.data
+}
+
+export async function getTodoById(id: string): Promise<TodoPage | null> {
+  const todoId = Number(id)
+  if(isNaN(todoId)) return null
+
+  try {
+    const res = await jsonApi.get<TodoPage>(`/todos/${todoId}`)
+    return res.data
+
+  } catch (error) {
+    const err = error as AxiosError
+    if(err.response?.status===404){
+      console.warn(`This id=${todoId} not found`)
+      return null
+    }
+    console.error("This todo have error:", err.message)
+    return null
+  }
+}
