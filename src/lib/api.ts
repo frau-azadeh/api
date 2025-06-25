@@ -1,4 +1,4 @@
-import { PostPage, TodoPage, UserPage } from "@/types/type";
+import { PhotoPage, PostPage, TodoPage, UserPage } from "@/types/type";
 import axios, { AxiosError } from "axios";
 
 const jsonApi = axios.create({
@@ -64,3 +64,7 @@ export async function getUser(): Promise<UserPage[]> {
   return res.data
 }
 
+export async function getPhoto(): Promise<PhotoPage[]> {
+  const res = await picsumApi.get<PhotoPage[]>("/v2/list")
+  return res.data
+}
