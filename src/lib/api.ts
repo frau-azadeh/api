@@ -29,7 +29,7 @@ export async function getPostById(id: string): Promise<PostPage | null> {
       console.warn(`This id=${postId} not found`);
       return null;
     }
-    console.error("Error with get post", err.message);
+    console.error("This post error is:", err.message);
     return null;
   }
 }
@@ -52,7 +52,7 @@ export async function getTodoById(id: string): Promise<TodoPage | null> {
       console.warn(`This id=${todoId} not found`);
       return null;
     }
-    console.error("error with get todo", err.message);
+    console.error("This todo have error:", err.message);
     return null;
   }
 }
