@@ -1,12 +1,10 @@
 import clsx from "clsx";
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "danger";
   size?: "xs" | "md" | "lg";
   children: ReactNode;
 }
-
 const Button: React.FC<ButtonProps> = ({
   className,
   variant = "primary",
@@ -19,7 +17,6 @@ const Button: React.FC<ButtonProps> = ({
     secondary: "bg-gray-500 hover:bg-gray-700 transition duration-300",
     danger: "bg-red-500 hover:bg-red-700 transition duration-300",
   };
-
   const sizeClass = {
     xs: "px-2 py-1 text-sm",
     md: "px-4 py-2 text-base",

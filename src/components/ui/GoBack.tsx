@@ -6,10 +6,10 @@ import React from "react";
 const GoBack = () => {
   const router = useRouter();
   return (
-    <div className="flex  items-end">
+    <div className="flex items-end">
       <button
         onClick={() => router.back()}
-        className="text-blue-500 hover:text-blue-950 font-bold m-2 flex items-end"
+        className="text-blue-500 hover:text-blue-900 m-2 flex items-end "
       >
         Go Back <ChevronLeft className="h-5 w-5" />
       </button>
