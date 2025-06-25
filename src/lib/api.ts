@@ -1,4 +1,4 @@
-import { PostPage, TodoPage } from "@/types/type";
+import { PostPage, TodoPage, UserPage } from "@/types/type";
 import axios, { AxiosError } from "axios";
 
 const jsonApi = axios.create({
@@ -58,3 +58,9 @@ export async function getTodoById(id: string): Promise<TodoPage | null> {
     return null
   }
 }
+
+export async function getUser(): Promise<UserPage[]> {
+  const res = await jsonApi.get<UserPage[]>("/users")
+  return res.data
+}
+
