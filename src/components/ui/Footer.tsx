@@ -37,7 +37,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="lg:row-span-1">
-            <span className="black font-bold text-gray-500 space-y-1 cursor-pointer">API Wallet</span>
+            <span className="black font-bold text-gray-500 space-y-1 cursor-pointer">
+              API Wallet
+            </span>
             <ul className="text-base text-gray-500 space-y-1 cursor-pointer">
               <li>API Card</li>
               <li>API Pay</li>
@@ -45,7 +47,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col items-center border-t border-gray-200 py-4"> 
+        <div className="flex flex-col items-center border-t border-gray-200 py-4">
           <p className="text-sm text-gray-500">Copyright @2025 API</p>
         </div>
       </div>
