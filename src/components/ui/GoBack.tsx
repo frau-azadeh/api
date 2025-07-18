@@ -1,7 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation'
 import React from 'react'
-import Button from './Button';
 import { ChevronLeft } from 'lucide-react';
 
 const GoBack:React.FC = () => {
