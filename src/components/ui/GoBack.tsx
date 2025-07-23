@@ -1,20 +1,23 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
+import Button from "./Button";
+import { useRouter } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 
 const GoBack: React.FC = () => {
   const router = useRouter();
   return (
-    <div>
-      <button
-        onClick={() => router.back()}
-        className="flex items-end text-blue-500 hover:text-blue-900 m-2"
-      >
-        Go Back
+    <Button
+      onClick={() => router.back()}
+      size="lg"
+      variant="primary"
+      className="mt-2"
+    >
+      <span className="flex items-center gap-2">
         <ChevronLeft className="h-5 w-5" />
-      </button>
-    </div>
+        Go Back
+      </span>
+    </Button>
   );
 };
 
