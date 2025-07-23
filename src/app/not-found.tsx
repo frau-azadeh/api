@@ -1,17 +1,17 @@
 import GoBack from "@/components/ui/GoBack";
 import Image from "next/image";
 
-export default function NotFoundPage() {
-  return (
-    <div className="flex flex-col justify-center items-center h-screen">
+export default function NotFoundPage(){
+  return(
+    <div className="flex flex-col items-center justify-center h-screen">
       <Image
-        src="/not-found.png"
         width={150}
         height={150}
         alt="not found"
-        className="w-full max-w-md rounded-2xl shadow-lg transform transition duration-300 hover:scale-75 md-hover:scale-125 sm:hover:scale-50"
+        src="/not-found.png"
+        className="w-full max-w-md rounded-2xl transform transition-300 duration-300 shadow-md hover:lg:scale-110 hover:scale-75"
       />
-      <GoBack />
+      <GoBack/>
     </div>
-  );
+  )
 }
