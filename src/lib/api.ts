@@ -1,5 +1,5 @@
 import { PhotoPage, PostPage, TodoPage, UserPage } from "@/types/type";
-import axios, { Axios, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 
 const jsonApi = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com",
