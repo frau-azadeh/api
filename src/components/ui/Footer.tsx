@@ -44,9 +44,9 @@ const Footer:React.FC = () => {
             <li>API Cash</li>
           </ul>
         </div>
-        <div className='flex flex-col items-center border-t border-gray-200 py-4'>
+      </div>
+      <div className='flex flex-col items-center border-t border-gray-200 py-4'>
           <p className='text-sm text-gray-500'>Copyright @2025 API</p>
-        </div>
       </div>
     </div>
    </footer>
