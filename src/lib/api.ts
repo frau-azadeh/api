@@ -1,10 +1,11 @@
 import { PhotoPage, PostPage, TodoPage, UserPage } from "@/types/type";
-import axios, { AxiosError } from "axios";
+import axios, { Axios, AxiosError } from "axios";
 
 const jsonApi = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com",
   timeout: 5000,
 });
+
 const picsumApi = axios.create({
   baseURL: "https://picsum.photos",
   timeout: 5000,
@@ -24,8 +25,8 @@ export async function getPostById(id: string): Promise<PostPage | null> {
     return res.data;
   } catch (error) {
     const err = error as AxiosError;
-    if (err.response?.status == 404) {
-      console.warn(`This id = ${postId} not found`);
+    if (err.response?.status === 404) {
+      console.warn(`This id=${postId} not found`);
       return null;
     }
     console.error("This post error is:", err.message);
@@ -51,7 +52,7 @@ export async function getTodoById(id: string): Promise<TodoPage | null> {
       console.warn(`This id=${todoId} not found`);
       return null;
     }
-    console.error("This to do have error", err.message);
+    console.error("This to do have error:", err.message);
     return null;
   }
 }
