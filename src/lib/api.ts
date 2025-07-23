@@ -9,56 +9,56 @@ const jsonApi = axios.create({
 const picsumApi = axios.create({
   baseURL: "https://picsum.photos",
   timeout: 5000,
-})
+});
 
 export async function getPost(): Promise<PostPage[]> {
-  const res = await jsonApi.get<PostPage[]>("/posts")
+  const res = await jsonApi.get<PostPage[]>("/posts");
   return res.data;
 }
 
-export async function getPostById(id: string):Promise<PostPage | null> {
+export async function getPostById(id: string): Promise<PostPage | null> {
   const postId = Number(id);
-  if(isNaN(postId))return null;
+  if (isNaN(postId)) return null;
 
   try {
-    const res = await jsonApi.get<PostPage>(`/posts/${postId}`)
+    const res = await jsonApi.get<PostPage>(`/posts/${postId}`);
     return res.data;
   } catch (error) {
     const err = error as AxiosError;
-    if(err.response?.status===404){
-      console.warn(`This id=${postId} not found`)
+    if (err.response?.status === 404) {
+      console.warn(`This id=${postId} not found`);
       return null;
     }
-    console.error("This post error is:", err.message)
+    console.error("This post error is:", err.message);
     return null;
   }
 }
 
 export async function getTodo(): Promise<TodoPage[]> {
-  const res = await jsonApi.get<TodoPage[]>("/todos")
+  const res = await jsonApi.get<TodoPage[]>("/todos");
   return res.data;
 }
 
 export async function getTodoById(id: string): Promise<TodoPage | null> {
   const todoId = Number(id);
-  if(isNaN(todoId))return null;
+  if (isNaN(todoId)) return null;
 
   try {
-    const res = await jsonApi.get<TodoPage>(`/todos/${todoId}`)
-    return res.data
+    const res = await jsonApi.get<TodoPage>(`/todos/${todoId}`);
+    return res.data;
   } catch (error) {
-    const err = error as AxiosError
-    if(err.response?.status===404){
-      console.warn(`This id=${todoId} not found`)
+    const err = error as AxiosError;
+    if (err.response?.status === 404) {
+      console.warn(`This id=${todoId} not found`);
       return null;
     }
-    console.error("This to do have error:", err.message)
-    return null
+    console.error("This to do have error:", err.message);
+    return null;
   }
 }
 
 export async function getUser(): Promise<UserPage[]> {
-  const res = await jsonApi.get<UserPage[]>("/users")
+  const res = await jsonApi.get<UserPage[]>("/users");
   return res.data;
 }
 
