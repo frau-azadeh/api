@@ -1,8 +1,9 @@
-import Button from "@/components/ui/Button";
 import Link from "next/link";
 
-export default function Home(){
-  return(
+import Button from "@/components/ui/Button";
+
+export default function Home() {
+  return (
     <div className="flex justify-center items-center h-screen">
       <div>
         <div className="justify-center items-center flex mb-5">
@@ -10,23 +11,17 @@ export default function Home(){
         </div>
         <div className="justify-center items-center flex gap-10">
           <Link href="./posts">
-            <Button
-              variant="primary"
-              size="lg"
-            >
+            <Button variant="primary" size="lg">
               Go to post page
             </Button>
           </Link>
           <Link href="./photo">
-            <Button 
-              variant="danger"
-              size="lg"
-            >
+            <Button variant="danger" size="lg">
               Go to photo page
             </Button>
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }

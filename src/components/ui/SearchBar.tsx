@@ -1,7 +1,8 @@
 "use client";
 
-import { Search, X, Loader2 } from "lucide-react";
+import { Loader2, Search, X } from "lucide-react";
 import Link from "next/link";
+
 import { useSearch } from "@/components/hooks/useSearch";
 
 export default function SearchBar() {

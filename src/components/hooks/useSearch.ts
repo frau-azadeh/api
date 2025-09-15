@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { getPost } from "@/lib/api";
+
 import { PostPage } from "@/types/type";
 
 export function useSearch() {

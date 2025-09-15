@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
+
 import { getPost } from "@/lib/api";
-import PostCard from "@/components/ui/PostCard";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import Pagination from "@/components/ui/Pagination";
-import { useSearchParams, useRouter } from "next/navigation";
+import PostCard from "@/components/ui/PostCard";
+
 import type { PostPage } from "@/types/type";
 
 const POSTS_PER_PAGE = 9;
@@ -24,7 +27,10 @@ const ClientPostList = () => {
     fetchPosts();
   }, []);
 
-  const totalPages = useMemo(() => Math.ceil(posts.length / POSTS_PER_PAGE), [posts]);
+  const totalPages = useMemo(
+    () => Math.ceil(posts.length / POSTS_PER_PAGE),
+    [posts],
+  );
 
   const currentPosts = useMemo(() => {
     const startIndex = (currentPage - 1) * POSTS_PER_PAGE;

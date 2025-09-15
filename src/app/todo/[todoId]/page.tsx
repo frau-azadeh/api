@@ -1,7 +1,8 @@
 import { getTodoById } from "@/lib/api";
-import { TodoPage } from "@/types/type";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+import { TodoPage } from "@/types/type";
 
 type PropsSingleTodoPage = {
   params: {
