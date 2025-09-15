@@ -1,10 +1,14 @@
 "use client";
+
+import React, { useCallback, useState } from "react";
+
+import clsx from "clsx";
+
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useCallback, useState } from "react";
+
 import SearchBar from "./SearchBar";
-import { Menu, X } from "lucide-react";
-import clsx from "clsx";
 
 const navItems = [
   { href: "/", label: "Main" },

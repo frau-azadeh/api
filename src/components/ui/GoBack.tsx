@@ -1,8 +1,11 @@
 "use client";
+
 import React from "react";
-import Button from "./Button";
-import { useRouter } from "next/navigation";
+
 import { ChevronLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
+import Button from "./Button";
 
 const GoBack: React.FC = () => {
   const router = useRouter();

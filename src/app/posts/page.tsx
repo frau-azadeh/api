@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+
 import ClientPostList from "@/components/ClientPostList";
 
 export default function PostPage() {
