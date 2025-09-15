@@ -1,7 +1,6 @@
-// components/ClientPostList.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { getPost } from "@/lib/api";
 import PostCard from "@/components/ui/PostCard";
 import Pagination from "@/components/ui/Pagination";
@@ -12,27 +11,25 @@ const POSTS_PER_PAGE = 9;
 
 const ClientPostList = () => {
   const [posts, setPosts] = useState<PostPage[]>([]);
+
   const searchParams = useSearchParams();
   const router = useRouter();
-
-  const pageParam = Number(searchParams.get("page")) || 1;
-  const [currentPage, setCurrentPage] = useState<number>(pageParam);
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchPosts = async () => {
       const allPosts = await getPost();
       setPosts(allPosts);
     };
-    fetchData();
+    fetchPosts();
   }, []);
 
-  useEffect(() => {
-    setCurrentPage(pageParam);
-  }, [pageParam]);
+  const totalPages = useMemo(() => Math.ceil(posts.length / POSTS_PER_PAGE), [posts]);
 
-  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
-  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const currentPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  const currentPosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    return posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  }, [posts, currentPage]);
 
   const handlePageChange = (page: number) => {
     router.push(`?page=${page}`);
